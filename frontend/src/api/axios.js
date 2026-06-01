@@ -1,17 +1,13 @@
 import axios from 'axios';
 
-// In production (Vercel), VITE_API_URL points to the deployed backend.
-// In local dev, Vite proxy handles /api → localhost:5000.
-const baseURL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : '/api';
-
+// Both frontend and backend are on the same Netlify domain
+// /api/* → /.netlify/functions/api/* (via netlify.toml redirect)
+// In local dev, Vite proxy handles /api → localhost:5000
 const API = axios.create({
-  baseURL,
+  baseURL: '/api',
   headers: { 'Content-Type': 'application/json' }
 });
 
-// Attach JWT token to every request
 API.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -21,7 +17,6 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Handle 401 globally — redirect to login
 API.interceptors.response.use(
   (response) => response,
   (error) => {
