@@ -5,6 +5,8 @@ node_modules/
 # Environment files (never commit secrets)
 .env
 backend/.env
+frontend/.env
+frontend/.env.local
 
 # Build output
 dist/
