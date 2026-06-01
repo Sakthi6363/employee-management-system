@@ -157,15 +157,7 @@ const Login = () => {
           </Link>
         </p>
 
-        {/* Demo hint */}
-        <div className="mt-3 p-3 rounded-2" style={{ background: '#f8fafc', fontSize: '0.78rem', color: '#64748b', border: '1px solid #e2e8f0' }}>
-          <div className="fw-semibold mb-1" style={{ color: '#475569' }}>
-            <i className="bi bi-info-circle me-1"></i> Default Admin Credentials
-          </div>
-          Admin ID: <strong>ADMIN001</strong> &nbsp;|&nbsp;
-          Email: <strong>admin@workflow.com</strong> &nbsp;|&nbsp;
-          Password: <strong>Admin@123</strong>
-        </div>
+
       </div>
     </div>
   );
