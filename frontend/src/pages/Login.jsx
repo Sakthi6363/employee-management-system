@@ -36,13 +36,7 @@ const Login = () => {
       if (mode === 'admin') {
         await adminLogin(form.admin_id, form.email, form.password);
       } else {
-        const u = await login(form.email, form.password);
-        // Block admins from using the user login tab
-        if (u.role === 'admin') {
-          setError('Admin accounts must use the Admin Login tab.');
-          setLoading(false);
-          return;
-        }
+        await login(form.email, form.password);
       }
       navigate('/dashboard');
     } catch (err) {
